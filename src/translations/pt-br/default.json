@@ -1,5 +1,9 @@
 {
-    "general": {
-        
+    "speller": {
+        "instruction": "Combine as letras para formar a palavra que você escutar:",
+        "correctsFirstTry": "Corretas Primeira tentativa",
+        "answered": "Respondidas",
+        "send": "enviar",
+        "showAnswer": "Mostrar resposta"
     }
 }

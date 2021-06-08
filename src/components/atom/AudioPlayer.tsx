@@ -11,7 +11,7 @@ const AudioPlayer = styled<React.FC<AudioPlayerProps>>(
         return (
             <div>
                 <ReactAudioPlayer
-                    {...src}
+                    src={src}
                     autoPlay
                     controls
                 />
@@ -19,3 +19,5 @@ const AudioPlayer = styled<React.FC<AudioPlayerProps>>(
         );
     }
 )``;
+
+export default AudioPlayer;
