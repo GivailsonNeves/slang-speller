@@ -4,6 +4,10 @@
         "correctsFirstTry": "Corretas Primeira tentativa",
         "answered": "Respondidas",
         "send": "enviar",
-        "showAnswer": "mostrar resposta"
+        "typingInstructions": "Digite aqui:",
+        "sortInstructions": "Organize as letras:",
+        "next": "próxima",
+        "letters": "Letras:",
+        "dragOrType": "Organizar ou digitar:"
     }
 }

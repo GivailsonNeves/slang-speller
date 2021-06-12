@@ -6,12 +6,20 @@
   --button-font-size: 1.2em;
   --button-contained-color: white;
   --button-contained-bg: gray;
-  --character-placeholder-bg: rgb(194, 189, 189);
-  --character-placeholder-color: black;
+  --character-color: rgb(194, 189, 189);
+  --character-placeholder-bg: rgb(238, 232, 232);
   --character-font-size: 1.2em;
+  --switch-bg: rgb(214, 209, 209);
+  --switch-tracker: #1ac0c6;
   --border-color: gray;
+  --spacer: 15px;
+  --section-spacer: 20px;
 }
 
 html, body {
   font-size: var(--font-size);
+}
+
+div, button {
+  transition: .3s all ease-in-out;
 }

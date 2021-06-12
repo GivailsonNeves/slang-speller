@@ -7,29 +7,41 @@ import Button from "../atom/Button";
 
 interface ControllPanelProps {
     className?: string;
+    onNext?: Function;
+    onAnswer?: Function;
+    soundURL: string;
 }
 
 const ControllPanel = styled<React.FC<ControllPanelProps>>(
-    ({ className, ...props }) => {
+    ({ 
+        className,
+        onNext,
+        onAnswer,
+        soundURL
+    }) => {
 
         const [t] = useTranslation();
 
         return (
             <div className={className}>
                 <Box>
-                    <div>
-                        <AudioPlayer src="https://cdn.slangapp.com/sounds/a33979024fe2ac9355edd64e96df145b47f73d79/normalized.mp3" />
+                    <div className="playerArea">
+                        <AudioPlayer src={soundURL} />
                     </div>
-                    <div>
+                    <div className="buttons">
                         <Button
                             variant="contained"
-                            color="primary">
+                            color="primary"
+                            onClick={() => onAnswer && onAnswer()}
+                        >
                             {t('speller.send')}
                         </Button>
                         <Button
                             variant="contained"
-                            color="secondary">
-                            {t('speller.showAnswer')}
+                            color="secondary"
+                            onClick={() => onNext && onNext()}
+                        >
+                            {t('speller.next')}
                         </Button>
                     </div>
                 </Box>
@@ -41,9 +53,27 @@ const ControllPanel = styled<React.FC<ControllPanelProps>>(
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: var(--section-spacer);
     }
     & > div  button {
         margin-left: 10px;
+    }
+
+    @media screen and (max-width: 580px) {
+        & > div {
+            display: block;
+        }
+        & .playerArea {
+            text-align: center;
+        }
+        & .buttons {
+            padding-top: var(--spacer);
+            display flex;
+            justify-content: space-between;
+        }
+        & .buttons button {
+            width: 45%;
+        }
     }
 `;
 

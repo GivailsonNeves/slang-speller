@@ -5,53 +5,79 @@ import Box from "../atom/Box";
 
 interface ScorePanelProps {
     className?: string;
+    letters: string[];
 }
 
 const ScorePanel = styled<React.FC<ScorePanelProps>>(
-    ({ className, ...props }) => {
+    ({ className, letters }) => {
 
         const [t] = useTranslation();
 
         return (
             <div className={className}>
                 <Box>
-                    <div>
-                        <p>{t('speller.instruction')}</p>
+                    <div className="principal">
+                        <div>
+                            <h2>{t('speller.instruction')}</h2>
+                        </div>
+                        <div>
+                            <span>{t('speller.correctsFirstTry')}
+                                <strong>10</strong>
+                            </span>
+                            <span>{t('speller.answered')}
+                                <strong>10</strong>
+                            </span>
+                        </div>
                     </div>
-                    <div>
-                        <span>{t('speller.correctsFirstTry')}
-                            <strong>10</strong>
-                        </span>
-                        <span>{t('speller.answered')}
-                            <strong>10</strong>
-                        </span>
+                    <div className="letters">
+                        <label>{t('speller.letters')}</label>
+                        <h2>{letters.join(' - ')}</h2>
                     </div>
                 </Box>
             </div>
         );
     }
 )`
-    & > div {
+    margin-bottom: var(--section-spacer);
+    & h2 {
+        margin: 0;
+    }
+    & .principal {
         display: flex;
         justify-content: space-between;
+        margin-bottom: var(--spacer);
     }
-    & > div > div {
+    & .principal > div {
         display: flex;
     }
-    & > div > div p {
-        margin: 0;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    & > div > div:first-child {
+    & .principal > div:first-child {
         flex: 1;
     }
-    & > div > div span {
+    & .principal > div span {
         margin-left: 10px;
         text-align: right;
     }
-    & > div > div span strong {
+    & .principal > div span strong {
         display: block;
+    }
+    @media screen and (max-width: 600px) {
+        & .principal {
+            display: block;
+        }
+        & .principal > div:first-child {
+            margin-bottom: var(--spacer);
+        }
+        & .principal > div:last-child {
+            justify-content: space-between;
+        }
+        & .principal > div span {
+            margin-left: 0;
+            margin-right: 10px;
+            text-align: right;
+        }
+        & .letters, & h2 {
+            text-align: center;
+        }
     }
 `;
 

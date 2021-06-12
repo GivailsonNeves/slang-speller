@@ -21,7 +21,6 @@ const Button = styled<React.FC<ButtonProps>>(
     border: none;
     font-size: var(--button-font-size);
     cursor: pointer;
-    transition: .3s all ease-in-out;
     &:hover {
         opacity: .8;
     }
