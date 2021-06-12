@@ -3,9 +3,13 @@
   --primary-color: #1ac0c6;
   --secondary-color: #fb7756;
   --font-size: 14px;
-  --button-font-size: 1.3em;
+  --button-font-size: 1.2em;
   --button-contained-color: white;
   --button-contained-bg: gray;
+  --character-placeholder-bg: rgb(194, 189, 189);
+  --character-placeholder-color: black;
+  --character-font-size: 1.2em;
+  --border-color: gray;
 }
 
 html, body {

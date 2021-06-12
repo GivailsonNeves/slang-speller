@@ -4,14 +4,15 @@ import styled from "styled-components";
 interface ButtonProps {
     className?: string;
     children?: any;
+    onClick?: Function;
     color?: 'primary' | 'secondary';
     variant?: 'contained';
 }
 
 const Button = styled<React.FC<ButtonProps>>(
-    ({children, color, variant, className, ...props}) => {
+    ({children, color, onClick, variant, className}) => {
         const _className = `${className ?? ''} ${color ?? ''} ${variant ?? ''}`;
-        return <button className={_className} {...props}>
+        return <button className={_className} onClick={() => onClick && onClick()}>
             {children}
         </button>
     }
