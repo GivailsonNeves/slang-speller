@@ -24,7 +24,6 @@ const PuzzleArea = styled<React.FC<PuzzleAreaProps>>(
         const [t] = useTranslation();
 
         useEffect(() => {
-            console.log(items);
             if (onSort) onSort(items)
         }, [items, onSort])
 
@@ -47,7 +46,6 @@ const PuzzleArea = styled<React.FC<PuzzleAreaProps>>(
                 result.source.index,
                 result.destination.index
             ));
-            console.log(items.join(''));
         }
 
         const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({

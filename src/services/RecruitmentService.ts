@@ -1,14 +1,29 @@
+import { CorrectAnswer } from "../model/CorrectAnswer";
+import { Question } from "../model/Question";
 import api from "./api";
 
 class RecruitmentService {
     private constructor(){};
 
-    nextQuestion() {
-        return api.get('recruitment/spelling');
+    static async nextQuestion(): Promise<Question> {
+        const { data } = await api.get('recruitment/spelling');
+        return {
+            audioURL: data['audio-url'],
+            id: data.id,
+            letterPool: data['letter-pool']
+        };
     }
 
-    answerQuestion(questionId: number, answer: string) {
-        return api.post('recruitment/spelling');
+    static async answerQuestion(id: number, answer: string): Promise<CorrectAnswer> {
+        const { data, ...res } = await api.post('recruitment/spelling', {
+            id,
+            answer
+        });
+        console.log(data)
+        return {
+            correct: data.correct,
+            correctAnswer: data['correct-answer']
+        };
     }
 }
 
