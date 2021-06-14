@@ -21,5 +21,5 @@ html, body {
 }
 
 div, button {
-  transition: .3s all ease-in-out;
+  transition: .3s opacity ease-in-out;
 }

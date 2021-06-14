@@ -9,6 +9,8 @@ import { useState } from "react";
 import { CorrectAnswer } from "../../model/CorrectAnswer";
 import ModalFeedback from "../molecules/ModalFeedback";
 
+import Spinner from '../../assets/imgs/loading.gif';
+
 interface SpellerProps {
     className?: string;
     letters: string[];
@@ -88,7 +90,9 @@ const Speller = styled<React.FC<SpellerProps>>(
                             onInput={(value: string) => setTextValue(value)}
                         />
                     </>
-                ) : <p>carregando...</p>
+                ) : <div className="loader">
+                    <img src={Spinner} alt="loading" />
+                </div>
             }
             <ControllPanel
                 soundURL={soundURL}
@@ -113,6 +117,14 @@ const Speller = styled<React.FC<SpellerProps>>(
     }
     & .switch-panel label {
         margin-right: var(--spacer);
+    }
+    & .loader {
+        height: 232px;
+        text-align: center;
+    }
+    & .loader img {
+        width: 80px;
+        margin-top: 100px;
     }
 `;
 
