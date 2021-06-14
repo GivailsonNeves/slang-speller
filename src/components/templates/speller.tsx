@@ -6,6 +6,8 @@ import TypingArea from "../molecules/TypingArea"
 import SwitchButton from "../atom/SwitchButton";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { CorrectAnswer } from "../../model/CorrectAnswer";
+import ModalFeedback from "../molecules/ModalFeedback";
 
 interface SpellerProps {
     className?: string;
@@ -13,6 +15,10 @@ interface SpellerProps {
     soundURL: string;
     onNextQuestion: Function;
     onAnswerQuestion: Function;
+    onFeedbackClose: Function;
+    totalAnswerd: number;
+    totalFirstTry: number;
+    correctAnswer?: CorrectAnswer | null;
 }
 
 const Speller = styled<React.FC<SpellerProps>>(
@@ -21,16 +27,26 @@ const Speller = styled<React.FC<SpellerProps>>(
         className,
         soundURL,
         onNextQuestion,
-        onAnswerQuestion
+        onAnswerQuestion,
+        onFeedbackClose,
+        correctAnswer,
+        totalAnswerd,
+        totalFirstTry
     }) => {
 
         const [t] = useTranslation();
+
         const [answerType, setAnswerType] = useState<'sorting' | 'typing'>('sorting');
         const [textValue, setTextValue] = useState<string>('');
         const [sortValue, setSortValue] = useState<string>('');
 
         const hdlChangePanel = (actived: boolean) => {
             setAnswerType(actived ? 'typing' : 'sorting');
+        }
+
+        const hdlClose = () => {
+            if (onFeedbackClose) onFeedbackClose();
+            setTextValue('');
         }
 
         const hdlNext = () => {
@@ -46,7 +62,11 @@ const Speller = styled<React.FC<SpellerProps>>(
         }
 
         return <div className={className}>
-            <ScorePanel letters={letters} />
+            <ScorePanel 
+                letters={letters}
+                totalAnswerd={totalAnswerd}
+                totalFirstTry={totalFirstTry}
+            />
             <div className="switch-panel">
                 <label>{t('speller.dragOrType')}</label>
                 <SwitchButton
@@ -74,6 +94,11 @@ const Speller = styled<React.FC<SpellerProps>>(
                 soundURL={soundURL}
                 onAnswer={hdlAnswer}
                 onNext={hdlNext}
+            />
+            <ModalFeedback 
+                onClose={hdlClose}
+                correctAnswer={correctAnswer}
+                open={!!correctAnswer && !!Object.keys(correctAnswer).length}
             />
         </div>;
     }

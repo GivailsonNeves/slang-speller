@@ -15,11 +15,10 @@ class RecruitmentService {
     }
 
     static async answerQuestion(id: number, answer: string): Promise<CorrectAnswer> {
-        const { data, ...res } = await api.post('recruitment/spelling', {
+        const { data } = await api.post('recruitment/spelling', {
             id,
             answer
         });
-        console.log(data)
         return {
             correct: data.correct,
             correctAnswer: data['correct-answer']

@@ -2,12 +2,16 @@
     "speller": {
         "instruction": "Combine as letras para formar a palavra que você escutar:",
         "correctsFirstTry": "Corretas Primeira tentativa",
-        "answered": "Respondidas",
+        "question": "Questão",
         "send": "enviar",
         "typingInstructions": "Digite aqui:",
         "sortInstructions": "Organize as letras:",
         "next": "próxima",
         "letters": "Letras:",
-        "dragOrType": "Organizar ou digitar:"
+        "dragOrType": "Organizar ou digitar:",
+        "ok": "OK",
+        "failMessage": "Que pena! Não está certo!",
+        "congratulations": "Boa! Bom trabalho!",
+        "answerIs": "A resposta correta é:"
     }
 }

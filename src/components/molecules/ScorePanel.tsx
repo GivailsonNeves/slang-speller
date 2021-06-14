@@ -6,12 +6,16 @@ import Box from "../atom/Box";
 interface ScorePanelProps {
     className?: string;
     letters: string[];
+    totalAnswerd: number;
+    totalFirstTry: number;
 }
 
 const ScorePanel = styled<React.FC<ScorePanelProps>>(
-    ({ className, letters }) => {
+    ({ className, letters, totalAnswerd, totalFirstTry }) => {
 
         const [t] = useTranslation();
+
+        const twoNumbers = (n: number)=> n > 9 || n === 0 ? n.toString() : `0${n}`;
 
         return (
             <div className={className}>
@@ -22,10 +26,10 @@ const ScorePanel = styled<React.FC<ScorePanelProps>>(
                         </div>
                         <div>
                             <span>{t('speller.correctsFirstTry')}
-                                <strong>10</strong>
+                                <strong>{twoNumbers(totalFirstTry)}</strong>
                             </span>
-                            <span>{t('speller.answered')}
-                                <strong>10</strong>
+                            <span>{t('speller.question')}
+                                <strong>{twoNumbers(totalAnswerd)}</strong>
                             </span>
                         </div>
                     </div>
