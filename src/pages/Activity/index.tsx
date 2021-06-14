@@ -21,7 +21,6 @@ const Activity = () => {
     }
 
     const hdlAnswer = async (answer: string) => {
-        console.log(answer);
         const _answer = await RecruitmentService.answerQuestion(question.id, answer);
         setAnswer(_answer);
         if (firstTry && _answer.correct) {

@@ -41,7 +41,7 @@ const Speller = styled<React.FC<SpellerProps>>(
         const [answerType, setAnswerType] = useState<'sorting' | 'typing'>('sorting');
         const [textValue, setTextValue] = useState<string>('');
         const [sortValue, setSortValue] = useState<string>('');
-        const [mobileMode, setMobileMode] = useState<boolean>(true);
+        const [mobileMode, setMobileMode] = useState<boolean>(false);
 
         const hdlChangePanel = (actived: boolean) => {
             setAnswerType(actived ? 'typing' : 'sorting');
@@ -72,8 +72,9 @@ const Speller = styled<React.FC<SpellerProps>>(
           }
 
           useEffect(() => {
-            window.addEventListener("resize", handleResize)
-          })
+            window.addEventListener("resize", handleResize);
+            handleResize();
+          });
 
         return <div className={className}>
             <ScorePanel

@@ -13,6 +13,31 @@ You can play as you want, the game will count how many questions you answered an
 
 You can try organizing the letters by dragging dropping or typing, there's a switch for it. In mobile versions you only be able to typing.
 
+## running project
+
+After clonning this project, open a terminal inside the folder and run:
+
+```bash
+> yarn install
+```
+
+To run the project in a local browser:
+
+```bash
+> yarn start
+```
+
+To run test:
+
+```bash
+> yarn test
+```
+
+To build:
+
+```bash
+> yarn build
+```
 ## System Screens
 
 <img src="https://github.com/GivailsonNeves/slang-speller/blob/357333027eb4fd9ab7657c9b885851b55b55495a/screenshoot/speller.png?raw=true" width="400">
