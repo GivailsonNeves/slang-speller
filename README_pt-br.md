@@ -14,3 +14,9 @@ Você pode jogar como quiser, o jogo vai contar quantas perguntas você responde
 Você pode tentar organizar as letras arrastando e soltando ou digitando, há uma opção para isso. Nas versões móveis, você só consegue digitar.
 
 ## Imagens do sistema
+
+<img src="https://github.com/GivailsonNeves/slang-speller/blob/357333027eb4fd9ab7657c9b885851b55b55495a/screenshoot/speller.png?raw=true" width="400">
+<p><small>Desktop</small></p>
+<br />
+<img src="https://github.com/GivailsonNeves/slang-speller/blob/357333027eb4fd9ab7657c9b885851b55b55495a/screenshoot/speller_mobile.png?raw=true" width="400">
+<p><small>Mobile</small></p>
