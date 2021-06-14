@@ -5,7 +5,7 @@ import ScorePanel from "../molecules/ScorePanel"
 import TypingArea from "../molecules/TypingArea"
 import SwitchButton from "../atom/SwitchButton";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CorrectAnswer } from "../../model/CorrectAnswer";
 import ModalFeedback from "../molecules/ModalFeedback";
 
@@ -59,10 +59,21 @@ const Speller = styled<React.FC<SpellerProps>>(
         const hdlAnswer = () => {
             if (onAnswerQuestion) {
                 onAnswerQuestion(
-                    answerType === 'sorting' ? sortValue : textValue
+                    answerType === 'sorting' && !mobileMode ? sortValue : textValue
                 );
             }
         }
+        const handleResize = () => {
+            if (window.innerWidth < 720) {
+                setMobileMode(true)
+            } else {
+                setMobileMode(false)
+            }
+          }
+
+          useEffect(() => {
+            window.addEventListener("resize", handleResize)
+          })
 
         return <div className={className}>
             <ScorePanel
