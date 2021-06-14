@@ -41,6 +41,7 @@ const Speller = styled<React.FC<SpellerProps>>(
         const [answerType, setAnswerType] = useState<'sorting' | 'typing'>('sorting');
         const [textValue, setTextValue] = useState<string>('');
         const [sortValue, setSortValue] = useState<string>('');
+        const [mobileMode, setMobileMode] = useState<boolean>(true);
 
         const hdlChangePanel = (actived: boolean) => {
             setAnswerType(actived ? 'typing' : 'sorting');
@@ -64,27 +65,36 @@ const Speller = styled<React.FC<SpellerProps>>(
         }
 
         return <div className={className}>
-            <ScorePanel 
+            <ScorePanel
                 letters={letters}
                 totalAnswerd={totalAnswerd}
                 totalFirstTry={totalFirstTry}
             />
-            <div className="switch-panel">
-                <label>{t('speller.dragOrType')}</label>
-                <SwitchButton
-                    onChange={hdlChangePanel}
-                    actived={answerType === 'typing'} />
-            </div>
+            {
+                !mobileMode && (
+                    <div className="switch-panel">
+                        <label>{t('speller.dragOrType')}</label>
+                        <SwitchButton
+                            onChange={hdlChangePanel}
+                            actived={answerType === 'typing'} />
+                    </div>
+                )
+            }
             {
                 (letters && letters.length) ? (
                     <>
-                        <PuzzleArea
-                            disabled={answerType === 'typing'}
-                            characteres={letters}
-                            onSort={(sorted: string[]) => setSortValue(sorted.join(''))}
-                        />
+                        {
+                            !mobileMode && (
+                                <PuzzleArea
+                                    disabled={answerType === 'typing'}
+                                    characteres={letters}
+                                    onSort={(sorted: string[]) => setSortValue(sorted.join(''))}
+                                />
+                            )
+                        }
+
                         <TypingArea
-                            disabled={answerType === 'sorting'}
+                            disabled={answerType === 'sorting' && !mobileMode}
                             maxLength={letters.length}
                             value={textValue}
                             onInput={(value: string) => setTextValue(value)}
@@ -99,7 +109,7 @@ const Speller = styled<React.FC<SpellerProps>>(
                 onAnswer={hdlAnswer}
                 onNext={hdlNext}
             />
-            <ModalFeedback 
+            <ModalFeedback
                 onClose={hdlClose}
                 correctAnswer={correctAnswer}
                 open={!!correctAnswer && !!Object.keys(correctAnswer).length}
